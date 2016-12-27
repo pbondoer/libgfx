@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 22:41:08 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/28 00:23:03 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/28 00:31:06 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_window		*gfx_free_window(t_gfx *gfx, t_window *win)
 	if (win->title)
 		ft_strdel(&(win->title));
 	if (win->buf)
-		gfx_free_image(win->buf);
+		gfx_free_image(gfx, win->buf);
 	ft_memdel((void **)&win);
 	return (NULL);
 }
@@ -57,7 +57,7 @@ t_window		*gfx_window(t_gfx *gfx, int width, int height, char *title)
 	if ((win->ptr = mlx_new_window(gfx->mlx, width, height, title)) == NULL ||
 			(win->title = ft_strdup(title)) == NULL ||
 			(win->buf = gfx_image(gfx, width, height)) == NULL)
-		return (gfx_window_free(win));
+		return (gfx_free_window(gfx, win));
 	win->id = get_window_id();
 	win->width = width;
 	win->height = height;

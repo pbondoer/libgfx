@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 19:59:25 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/16 00:48:45 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/28 00:32:01 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ int				ft_countwords(char *str, char c);
 double			ft_lerp(double first, double second, double p);
 double			ft_ilerp(double val, double first, double second);
 int				ft_lerpi(int first, int second, double p);
+float			ft_clamp(float i, float a, float b);
 #endif

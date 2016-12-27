@@ -6,12 +6,13 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 05:33:42 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/27 23:08:42 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/28 00:30:25 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "mlx.h"
+#include "libgfx.h"
 
 /*
 ** Destroys a gfx object
@@ -21,7 +22,7 @@ t_gfx		*gfx_free(t_gfx *gfx)
 {
 	if (!gfx)
 		return (NULL);
-	ft_memdel((void **)&mlx);
+	ft_memdel((void **)&gfx);
 	return (NULL);
 }
 
@@ -29,12 +30,12 @@ t_gfx		*gfx_free(t_gfx *gfx)
 ** Creates a new gfx object (should only be called once)
 */
 
-t_mlx		*gfx_init(void)
+t_gfx		*gfx_init(void)
 {
 	t_gfx	*gfx;
 
-	if ((mlx = ft_memalloc(sizeof(t_mlx))) == NULL ||
-			(gfx->mlx = mlx_init()) == NULL)
+	if ((gfx = ft_memalloc(sizeof(t_gfx))) == NULL ||
+			(gfx->mlx = gfx_init()) == NULL)
 		return (NULL);
-	return (mlx);
+	return (gfx);
 }
