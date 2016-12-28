@@ -14,8 +14,8 @@ be reused in multiple projects later.
 
 ## Compiling
 Make sure to edit the `Makefile` to point to
-[https://github.com/pbondoer/42-libft](libft) and
-[https://github.com/pbondoer/miniLibX](miniLibX). Run `make` to compile against
+[libft](https://github.com/pbondoer/42-libft) and
+[miniLibX](https://github.com/pbondoer/miniLibX). Run `make` to compile against
 the current OS as a target. Currently only Linux and OS X (Darwin) are
 supported.
 
