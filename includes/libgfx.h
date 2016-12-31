@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 04:47:44 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 08:55:18 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,6 @@ typedef struct		s_image
 }					t_image;
 
 /*
-** Holds a single window with associated metadata
-*/
-
-typedef struct		s_window
-{
-	int			id;
-	void		*ptr;
-	int			width;
-	int			height;
-	char		*title;
-	t_image		*buf;
-}					t_window;
-
-/*
 ** Holds one instance of gfx, which controls windows
 */
 
@@ -81,6 +67,21 @@ typedef struct		s_gfx
 	void		*mlx;
 	t_list		*window;
 }					t_gfx;
+
+/*
+** Holds a single window with associated metadata
+*/
+
+typedef struct		s_window
+{
+	int			id;
+	void		*ptr;
+	t_gfx		*gfx;
+	int			width;
+	int			height;
+	char		*title;
+	t_image		*buf;
+}					t_window;
 
 /*
 ** Core functions: intialize and destroy the main gfx instance
@@ -94,8 +95,9 @@ t_gfx				*gfx_free(t_gfx *gfx);
 */
 
 t_window			*gfx_window(t_gfx *gfx, int width, int height, char *title);
-t_window			*gfx_free_window(t_gfx *gfx, t_window *win);
-void				gfx_close_window(t_gfx *gfx, t_window *win);
+t_window			*gfx_free_window(t_window *win);
+void				gfx_close_window(t_window *win);
+void				gfx_window_repaint(t_window *win);
 
 /*
 ** Images: these can be used to manipulate images

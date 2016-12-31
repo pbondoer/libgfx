@@ -6,11 +6,11 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 21:02:30 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 07:34:51 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/31 08:09:57 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libgfx.a
+include gfx.mk
 
 # directories
 SRC_DIR = ./src
@@ -23,7 +23,8 @@ SRC		= init.c \
 		  window.c \
 		  color.c \
 		  paint.c \
-		  pixel.c
+		  pixel.c \
+		  event.c
 
 OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
@@ -34,23 +35,25 @@ CFLAGS	= -Wall -Wextra -Werror
 # libraries
 L_MLX	= ../miniLibX
 L_FT	= ../libft
+include $(L_MLX)/mlx.mk
+include $(L_FT)/libft.mk
 
-all: obj $(NAME)
+all: obj $(GFX_NAME)
 
 obj:
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I $(L_FT) -I $(L_MLX) -I $(INC_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) $(FT_INC) $(MLX_INC) $(GFX_INC) -o $@ -c $<
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(GFX_NAME): $(OBJ)
+	ar rc $(GFX_NAME) $(OBJ)
+	ranlib $(GFX_NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(GFX_NAME)
 
 re: fclean all

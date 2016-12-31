@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/31 04:57:48 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 05:31:44 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/31 08:09:11 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(FT_INC) $(MLX_INC) $(GFX_INC) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(GFX_LNK) $(FT_LNK) -o $(NAME)
+	$(CC) $(OBJ) $(FT_LNK) $(MLX_LNK) $(GFX_LNK) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
