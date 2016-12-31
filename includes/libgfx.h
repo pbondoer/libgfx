@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/28 00:32:17 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 04:47:44 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_gfx				*gfx_free(t_gfx *gfx);
 
 t_window			*gfx_window(t_gfx *gfx, int width, int height, char *title);
 t_window			*gfx_free_window(t_gfx *gfx, t_window *win);
+void				gfx_close_window(t_gfx *gfx, t_window *win);
 
 /*
 ** Images: these can be used to manipulate images

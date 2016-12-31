@@ -5,50 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/12/01 21:02:30 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 07:34:51 by pbondoer         ###   ########.fr        #
+#    Created: 2016/12/31 04:57:48 by pbondoer          #+#    #+#              #
+#    Updated: 2016/12/31 05:31:44 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libgfx.a
+NAME		= gfxtest
 
-# directories
-SRC_DIR = ./src
-INC_DIR = ./includes
-OBJ_DIR = ./obj
+SRC			= main.c
+OBJ			= $(SRC:.c=.o)
 
-# src / obj files
-SRC		= init.c \
-		  image.c \
-		  window.c \
-		  color.c \
-		  paint.c \
-		  pixel.c
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
 
-OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+L_MLX		= ../../miniLibX
+L_FT		= ../../libft
+L_GFX		= ..
 
-# compiler
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+include $(L_MLX)/mlx.mk
+include $(L_GFX)/gfx.mk
+include $(L_FT)/libft.mk
 
-# libraries
-L_MLX	= ../miniLibX
-L_FT	= ../libft
+all: $(NAME)
 
-all: obj $(NAME)
-
-obj:
-	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I $(L_FT) -I $(L_MLX) -I $(INC_DIR) -o $@ -c $<
+%.o:%.c
+	$(CC) $(CFLAGS) $(FT_INC) $(MLX_INC) $(GFX_INC) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	$(CC) $(OBJ) $(MLX_LNK) $(GFX_LNK) $(FT_LNK) -o $(NAME)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

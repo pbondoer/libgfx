@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 05:33:42 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/28 00:30:25 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 05:30:24 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_gfx		*gfx_init(void)
 	t_gfx	*gfx;
 
 	if ((gfx = ft_memalloc(sizeof(t_gfx))) == NULL ||
-			(gfx->mlx = gfx_init()) == NULL)
+			(gfx->mlx = mlx_init()) == NULL)
 		return (NULL);
 	return (gfx);
 }

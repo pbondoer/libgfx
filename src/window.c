@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 22:41:08 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/28 00:31:06 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 06:34:13 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,25 @@ t_window		*gfx_free_window(t_gfx *gfx, t_window *win)
 	if (!win)
 		return (NULL);
 	if (win->ptr && gfx)
-		mlx_destroy_window(gfx, win->ptr);
+		mlx_destroy_window(gfx->mlx, win->ptr);
 	if (win->title)
 		ft_strdel(&(win->title));
 	if (win->buf)
 		gfx_free_image(gfx, win->buf);
 	ft_memdel((void **)&win);
 	return (NULL);
+}
+
+/*
+** Closes a window
+*/
+
+void			gfx_close_window(t_gfx *gfx, t_window *win)
+{
+	if (!gfx || !win)
+		return ;
+	ft_lstremove(&(gfx->window), win);
+	gfx_free_window(gfx, win);
 }
 
 /*
@@ -61,5 +73,7 @@ t_window		*gfx_window(t_gfx *gfx, int width, int height, char *title)
 	win->id = get_window_id();
 	win->width = width;
 	win->height = height;
-	return (win);
+	ft_lstadd(&gfx->window, ft_lstnew(win, sizeof(t_window)));
+	ft_memdel((void **)&win);
+	return ((t_window *)gfx->window->content);
 }
