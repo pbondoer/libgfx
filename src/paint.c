@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 23:14:46 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 08:25:26 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 10:28:28 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		gfx_window_clear(t_window *win)
 ** Repaints the butter to the current window
 */
 
-void		gfx_window_repaint(t_window *win)
+void		gfx_window_refresh(t_window *win)
 {
 	mlx_put_image_to_window(win->gfx->mlx, win->ptr, win->buf->image, 0, 0);
 }

@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 21:02:30 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 08:09:57 by pbondoer         ###   ########.fr        #
+#    Updated: 2016/12/31 10:10:49 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ SRC		= init.c \
 		  color.c \
 		  paint.c \
 		  pixel.c \
-		  event.c
+		  event.c \
+		  line.c \
+		  lineclip.c \
+		  hittest.c
 
 OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 

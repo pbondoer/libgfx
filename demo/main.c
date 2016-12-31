@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/31 04:55:43 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 05:58:58 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 10:29:04 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,15 @@ int		main(int argc, char **argv)
 	
 	list_win(gfx);
 
-	gfx_close_window(gfx, target);
+	t_point p;
+	t_point p1;
 
-	list_win(gfx);
+	p.x = 0;
+	p.y = 0;
+	p1.x = 100;
+	p1.y = 121;
+	gfx_line_window(target, p, p1, (t_color)0xFF0000);
+	gfx_window_refresh(target);
 
 	mlx_loop(gfx->mlx);
 }

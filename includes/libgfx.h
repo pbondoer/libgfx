@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 08:55:18 by pbondoer         ###   ########.fr       */
+/*   Updated: 2016/12/31 10:28:41 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_gfx				*gfx_free(t_gfx *gfx);
 t_window			*gfx_window(t_gfx *gfx, int width, int height, char *title);
 t_window			*gfx_free_window(t_window *win);
 void				gfx_close_window(t_window *win);
-void				gfx_window_repaint(t_window *win);
+void				gfx_window_refresh(t_window *win);
 
 /*
 ** Images: these can be used to manipulate images
@@ -108,6 +108,14 @@ t_image				*gfx_free_image(t_gfx *gfx, t_image *img);
 t_color				gfx_image_get_pixel(t_image *image, int x, int y);
 void				gfx_image_set_pixel(t_image *img, int x, int y, t_color c);
 void				gfx_image_clear(t_image *image);
+
+/*
+** Line
+*/
+
+void				gfx_line(t_image *img, t_point p1, t_point p2, t_color c);
+void				gfx_line_window(t_window *window, t_point p1, t_point p2,
+						t_color c);
 
 /*
 ** Color helpers
