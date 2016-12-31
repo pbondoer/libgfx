@@ -3,23 +3,30 @@ A simple library to make miniLibX better :tada:
 
 This is my small library for `miniLibX`. I started getting tired of reusing the
 same functions in most of my projects so I built a more streamlined version that
-compiles and works on both OS X and Linux.
+contains my most usually used functions.
 
 It is meant to be quite minimal and only contain the most essential functions to
 be reused in multiple projects later.
 
 ## Features
 * Multiple double-buffered windows
-* Draw basic shapes (line, rectangle), outlined or filled
+* Draw lines!
+
+### Planned features
+* Rectangles (filled and outlined)
+* Circles (filled and outlined)
+* Polygons (filled and outlined)
 
 ## Compiling
 Make sure to edit the `Makefile` to point to
 [libft](https://github.com/pbondoer/42-libft) and
-[miniLibX](https://github.com/pbondoer/miniLibX). Run `make` to compile against
-the current OS as a target. Currently only Linux and OS X (Darwin) are
-supported.
+[miniLibX](https://github.com/pbondoer/miniLibX). Run `make` to compile the
+library.
+
+## Demo project
+There is a demo project in the `demo` folder. Feel free to mess with the code
+in there. It should display how to open up more than one window, and how to draw
+within windows.
 
 ## License
-`miniLibX` (c) Olivier Crouzet
-
 `libgfx` is under the GNU General Public License 3.0
