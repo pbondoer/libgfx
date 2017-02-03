@@ -6,11 +6,11 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 21:02:30 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 10:10:49 by pbondoer         ###   ########.fr        #
+#    Updated: 2017/02/03 03:05:37 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include gfx.mk
+include libgfx.mk
 
 # directories
 SRC_DIR = ./src
@@ -38,7 +38,7 @@ CFLAGS	= -Wall -Wextra -Werror
 # libraries
 L_MLX	= ../miniLibX
 L_FT	= ../libft
-include $(L_MLX)/mlx.mk
+include $(L_MLX)/libmlx.mk
 include $(L_FT)/libft.mk
 
 all: obj $(GFX_NAME)
@@ -59,4 +59,6 @@ clean:
 fclean: clean
 	rm -f $(GFX_NAME)
 
-re: fclean all
+re:
+	@$(MAKE) fclean --no-print-directory
+	@$(MAKE) all --no-print-directory
