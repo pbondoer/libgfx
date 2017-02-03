@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 08:35:18 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 10:28:41 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:15:25 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,10 @@ void				gfx_image_clear(t_image *image);
 ** Line
 */
 
-void				gfx_line(t_image *img, t_point p1, t_point p2, t_color c);
-void				gfx_line_window(t_window *window, t_point p1, t_point p2,
-						t_color c);
+void				gfx_line(t_image *img, t_point p1, t_point p2,
+						const t_color c);
+void				gfx_line_window(t_window *window, t_point p1,
+						t_point p2, const t_color c);
 
 /*
 ** Color helpers

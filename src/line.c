@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 06:06:04 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 10:17:54 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:15:28 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 ** Draws a line to a window
 */
 
-void		gfx_line_window(t_window *win, t_point p1, t_point p2, t_color c)
+inline void		gfx_line_window(t_window *win, t_point p1,
+								t_point p2, const t_color c)
 {
 	gfx_line(win->buf, p1, p2, c);
 }
@@ -27,7 +28,10 @@ void		gfx_line_window(t_window *win, t_point p1, t_point p2, t_color c)
 ** Draws a line to an image
 */
 
-void		gfx_line(t_image *img, t_point p1, t_point p2, t_color c)
+void			gfx_line(t_image *restrict img,
+						t_point p1,
+						t_point p2,
+						const t_color c)
 {
 	t_line	line;
 

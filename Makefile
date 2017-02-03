@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/01 21:02:30 by pbondoer          #+#    #+#              #
-#    Updated: 2017/02/03 03:05:37 by pbondoer         ###   ########.fr        #
+#    Updated: 2017/02/03 04:31:54 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ OBJ		= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 # compiler
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
+CFLAGS += -O3 -march=native -pipe
 
 # libraries
 L_MLX	= ../miniLibX

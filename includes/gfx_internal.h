@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/31 07:50:22 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 10:19:24 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:18:01 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		gfx_window_hook_close(t_window *win);
 */
 
 int		lineclip(t_point *p1, t_point *p2, int w, int h);
-int		point_in_bounds(t_point *p, int w, int h);
-int		point_in_rectangle(t_point *p, t_point min, t_point max);
+int		point_in_bounds(const t_point *p, const int w, const int h);
+int		point_in_rectangle(const t_point *p, const t_point min,
+			const t_point max);
 #endif

@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/27 22:41:08 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 08:58:34 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:11:17 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** Gets the next unique window identifier
 */
 
-static int		get_window_id(void)
+static inline int	get_window_id(void)
 {
 	static int	cur = 0;
 
@@ -31,7 +31,7 @@ static int		get_window_id(void)
 ** Destroys a window
 */
 
-t_window		*gfx_free_window(t_window *win)
+t_window			*gfx_free_window(t_window *restrict win)
 {
 	if (!win)
 		return (NULL);
@@ -49,7 +49,7 @@ t_window		*gfx_free_window(t_window *win)
 ** Closes a window
 */
 
-void			gfx_close_window(t_window *win)
+inline void			gfx_close_window(t_window *win)
 {
 	if (!win)
 		return ;
@@ -61,7 +61,7 @@ void			gfx_close_window(t_window *win)
 ** Base hooks for new windows
 */
 
-static void		do_hooks(t_window *win)
+static inline void	do_hooks(t_window *win)
 {
 	mlx_expose_hook(win->ptr, gfx_window_hook_expose, win);
 	mlx_hook(win->ptr, 17, 1L << 0, gfx_window_hook_close, win);
@@ -71,7 +71,7 @@ static void		do_hooks(t_window *win)
 ** Creates a new window with the associated buffers
 */
 
-t_window		*gfx_window(t_gfx *gfx, int width, int height, char *title)
+t_window			*gfx_window(t_gfx *gfx, int width, int height, char *title)
 {
 	t_window	*win;
 

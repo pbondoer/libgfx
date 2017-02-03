@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/31 07:50:42 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 08:58:44 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:14:33 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@
 
 /*
 ** Handles expose for X11 (this event won't be triggered in Cocoa)
+** Simply redraw our buffer to screen
 */
 
 int		gfx_window_hook_expose(t_window *win)
 {
-	(void)win;
+	gfx_window_refresh(win);
 	return (0);
 }
 
 /*
 ** Handles window closing
+** gfx->window is a list pointer so if it is NULL we closed our last window
 */
 
 int		gfx_window_hook_close(t_window *win)

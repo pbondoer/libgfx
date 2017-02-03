@@ -6,42 +6,43 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 07:45:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/31 10:20:26 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:16:43 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgfx.h"
+#define R_BOTTOM	1
+#define R_TOP		2
+#define R_RIGHT		4
+#define R_LEFT		8
 
 /*
 ** Helper function to get a t_point with a size
 */
 
-static t_point	size(int w, int h)
+static inline t_point	size(const int w, const int h)
 {
-	t_point p;
-
-	p.x = w;
-	p.y = h;
-	return (p);
+	return ((t_point){.x = w, .y = h});
 }
 
 /*
 ** Gets the region (top, bottom), (left, right)
 */
 
-static int		region(int x, int y, int w, int h)
+static inline int		region(const int x, const int y,
+							const int w, const int h)
 {
 	int c;
 
 	c = 0;
 	if (y >= h)
-		c |= 1;
+		c |= R_BOTTOM;
 	else if (y < 0)
-		c |= 2;
+		c |= R_TOP;
 	if (x >= w)
-		c |= 4;
+		c |= R_RIGHT;
 	else if (x < 0)
-		c |= 8;
+		c |= R_LEFT;
 	return (c);
 }
 
@@ -49,21 +50,24 @@ static int		region(int x, int y, int w, int h)
 ** Clips the lines according to the region codes
 */
 
-static t_point	clip_xy(t_point *p1, t_point *p2, t_point size, int rout)
+static t_point			clip_xy(const t_point *restrict p1,
+								const t_point *restrict p2,
+								const t_point size,
+								const int rout)
 {
 	t_point p;
 
-	if (rout & 1)
+	if (rout & R_BOTTOM)
 	{
 		p.x = p1->x + (p2->x - p1->x) * (size.y - p1->y) / (p2->y - p1->y);
 		p.y = size.y - 1;
 	}
-	else if (rout & 2)
+	else if (rout & R_TOP)
 	{
 		p.x = p1->x + (p2->x - p1->x) * -p1->y / (p2->y - p1->y);
 		p.y = 0;
 	}
-	else if (rout & 4)
+	else if (rout & R_RIGHT)
 	{
 		p.x = size.x - 1;
 		p.y = p1->y + (p2->y - p1->y) * (size.x - p1->x) / (p2->x - p1->x);
@@ -80,7 +84,10 @@ static t_point	clip_xy(t_point *p1, t_point *p2, t_point size, int rout)
 ** Implementation of the Cohen–Sutherland line-clipping algorithm
 */
 
-int				lineclip(t_point *p1, t_point *p2, int w, int h)
+int						lineclip(t_point *restrict p1,
+								t_point *restrict p2,
+								const int w,
+								const int h)
 {
 	t_point		p;
 	int			r1;

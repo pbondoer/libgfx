@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 14:43:24 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/28 00:15:18 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 03:56:49 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "libft.h"
 
 /*
-** Smoothly interpolated between two color values (useful for alpha blending)
+** Smoothly interpolated between two color values (useful for alpha blending
+** and gradients!)
 */
 
-t_color		clerp(t_color c1, t_color c2, float p)
+t_color			clerp(const t_color c1, const t_color c2, float p)
 {
 	t_color c;
 
@@ -39,7 +40,7 @@ t_color		clerp(t_color c1, t_color c2, float p)
 ** Same as above, but converts ints as a lazy shortcut to casting
 */
 
-t_color		cilerp(int c1, int c2, float p)
+inline t_color	cilerp(const int c1, const int c2, const float p)
 {
 	if (c1 == c2)
 		return ((t_color)c1);

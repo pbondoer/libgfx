@@ -6,7 +6,7 @@
 #    By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/31 04:57:48 by pbondoer          #+#    #+#              #
-#    Updated: 2016/12/31 08:09:11 by pbondoer         ###   ########.fr        #
+#    Updated: 2017/02/03 02:54:35 by pbondoer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,20 @@ L_MLX		= ../../miniLibX
 L_FT		= ../../libft
 L_GFX		= ..
 
-include $(L_MLX)/mlx.mk
-include $(L_GFX)/gfx.mk
+#LIB_INC		:=
+#LIB_LNK		:=
+
+include $(L_MLX)/libmlx.mk
+include $(L_GFX)/libgfx.mk
 include $(L_FT)/libft.mk
 
 all: $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) $(FT_INC) $(MLX_INC) $(GFX_INC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(LIB_INC) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(FT_LNK) $(MLX_LNK) $(GFX_LNK) -o $(NAME)
+	$(CC) $(OBJ) $(LIB_LNK) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -40,4 +43,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re:
+	@$(MAKE) fclean --no-print-directory
+	@$(MAKE) all --no-print-directory

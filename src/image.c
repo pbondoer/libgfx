@@ -6,7 +6,7 @@
 /*   By: pbondoer <pbondoer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 04:21:40 by pbondoer          #+#    #+#             */
-/*   Updated: 2016/12/27 23:08:53 by pbondoer         ###   ########.fr       */
+/*   Updated: 2017/02/03 04:08:57 by pbondoer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_image		*gfx_free_image(t_gfx *gfx, t_image *img)
 ** Creates a new image
 */
 
-t_image		*gfx_image(t_gfx *gfx, int width, int height)
+t_image		*gfx_image(t_gfx *gfx, const int width, const int height)
 {
 	t_image		*img;
 
